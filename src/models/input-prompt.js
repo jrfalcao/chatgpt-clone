@@ -3,3 +3,5 @@ class InputPrompt{
         this.prompt = prompt;
     }
 }
+
+module.exports = InputPrompt

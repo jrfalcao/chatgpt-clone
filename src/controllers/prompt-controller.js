@@ -7,18 +7,18 @@ module.exports = {
         const inputModel = new InputPrompt(req.body)
 
         try {
-            const response = await openaiAPI.createCompletion(
+            const response = await openaiAPI.completions.create(
                 openai.textCompletion(inputModel)
             )
-
+            
             return res.status(200).json({
                 success:true,
-                data: response.data.choices[0].text
+                data: response.choices[0].text
             })
         } catch (error) {
             return res.status(400).json({
                 success: false,
-                error: error.response ? error.response : "There was an error on the server"
+                error: error.response ? error.response.data : "There was an error on the server"
             })
         }
     }
